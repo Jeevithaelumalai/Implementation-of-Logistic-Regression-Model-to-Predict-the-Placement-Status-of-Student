@@ -45,6 +45,19 @@ x = data1.iloc[:,:-1]
 x
 y = data1["status"]
 y
+from sklearn.model_selection import train_test_split
+x_train,x_test,y_train,y_test = train_test_split(x,y,test_size = 0.2,random_state = 0)
+from sklearn.linear_model import LogisticRegression
+lr = LogisticRegression(solver = "liblinear")
+lr.fit(x_train,y_train)
+y_pred = lr.predict(x_test)
+y_pred
+from sklearn.metrics import accuracy_score
+accuracy = accuracy_score(y_test,y_pred)
+accuracy
+from sklearn.metrics import confusion_matrix
+confusion=(y_test,y_pred)
+confusion
 ```
 
 ## Output:
